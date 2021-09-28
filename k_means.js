@@ -61,6 +61,8 @@ const calculate = () => {
         tempAverageY = tempAverageY/iter;
 
         center.forEach((c,index) => {
+            tempAverageX = 0;
+            tempAverageY = 0;
             if(c[1] === iterColor && parseInt(c[0][0]) !== parseInt(tempAverageX)
                                         && parseInt(c[0][1]) !== parseInt(tempAverageY)){
                 c[0][0] = tempAverageX;
