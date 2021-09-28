@@ -18,10 +18,7 @@ const calculate = () => {
     console.log(list);
     console.log(center);
 
-    list.forEach((coords)=>{
-        canvCont.fillStyle = coords[2];
-        canvCont.fillRect(coords[0],coords[1],4, 4);
-    });
+
 
     center.forEach(c => {
         canvCont.fillStyle = c[1];
@@ -63,18 +60,19 @@ const calculate = () => {
         tempAverageX = tempAverageX/iter;
         tempAverageY = tempAverageY/iter;
 
-        center.forEach(center => {
-            if(center[1] === iterColor && center[0][0] !== tempAverageX
-                                        && center[0][1] !== tempAverageY){
-
-                center[0][0] = tempAverageX;
-                center[0][1] = tempAverageY;
+        center.forEach((c,index) => {
+            if(c[1] === iterColor && parseInt(c[0][0]) !== parseInt(tempAverageX)
+                                        && parseInt(c[0][1]) !== parseInt(tempAverageY)){
+                c[0][0] = tempAverageX;
+                c[0][1] = tempAverageY;
                 canvCont.fillStyle = iterColor;
                 canvCont.fillRect(tempAverageX,tempAverageY,4,4);
+                //calculate();
             }
         })
 
     });
+
 }
 
 //Пометить центр тяжести
@@ -119,6 +117,10 @@ const arrangeDot = () => {
     for (let i = 0; i < count; i++){
         list.push([Math.random()*max,Math.random()*max,'#000000']);
     }
+    list.forEach((coords)=>{
+        canvCont.fillStyle = coords[2];
+        canvCont.fillRect(coords[0],coords[1],4, 4);
+    });
 
     document.getElementById('btn').setAttribute("disabled", "true");
 }
